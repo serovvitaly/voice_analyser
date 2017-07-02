@@ -1,5 +1,12 @@
 package sample;
 
-public class Project {
+class Project {
 
+    Project() {
+        InitLayout();
+    }
+
+    private void InitLayout() {
+        System.out.println("Init project layout...");
+    }
 }
