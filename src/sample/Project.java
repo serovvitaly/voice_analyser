@@ -1,8 +1,6 @@
 package sample;
 
 import com.sun.media.sound.WaveFileReader;
-import phonecs.WavFile;
-import phonecs.WavFileException;
 
 import java.io.*;
 import java.io.IOException;
@@ -14,10 +12,16 @@ class Project {
 
     private File audioFile;
 
-    Project(File  audioFile) throws IOException, UnsupportedAudioFileException, WavFileException {
+    Project(File  audioFile) throws IOException, UnsupportedAudioFileException {
         InitLayout();
         this.audioFile = audioFile;
         WavFile  wavFile = WavFile.openWavFile(audioFile);
+
+        System.out.println("AudioFormat: " + wavFile.AudioFormat);
+        System.out.println("NumChannels: " + wavFile.NumChannels);
+        System.out.println("SampleRate: " + wavFile.SampleRate);
+        System.out.println("BitsPerSample: " + wavFile.BitsPerSample);
+
         //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
     }
 
