@@ -36,13 +36,10 @@
             <ListView fx:id="projectListView" VBox.vgrow="ALWAYS"/>
         </AnchorPane>
         <AnchorPane>
-            <TabPane tabClosingPolicy="UNAVAILABLE">
-                <Tab text="Untitled Tab 1">
+            <TabPane fx:id="projectsTabPane" tabClosingPolicy="UNAVAILABLE">
+                <!--<Tab text="Untitled Tab 1">
                     <AnchorPane/>
-                </Tab>
-                <Tab text="Untitled Tab 2">
-                    <AnchorPane/>
-                </Tab>
+                </Tab>-->
             </TabPane>
         </AnchorPane>
     </SplitPane>

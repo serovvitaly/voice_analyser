@@ -3,9 +3,7 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -21,6 +19,7 @@ public class Controller {
 
     public VBox mainLayout;
     public ListView<String> projectListView;
+    public TabPane projectsTabPane;
 
     /**
      * Действие "Создание проекта"
@@ -32,17 +31,13 @@ public class Controller {
         System.out.println("Making project...");
 
         FileChooser fileChooser = new FileChooser();
-
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Аудио файлы", "*.mp3", "*.wav"));
-
         fileChooser.setTitle("Выбор аудио файла");
 
         Stage stage = new Stage();
         List<File> audioFiles = fileChooser.showOpenMultipleDialog(stage);
 
         try {
-
-            Project project = new Project();
 
             ObservableList<String> items = projectListView.getItems();
             for (File audioFile: audioFiles) {
@@ -51,17 +46,20 @@ public class Controller {
                     continue;
                 }
                 items.add(audioFileName);
+                projectsTabPane.getTabs().add(new Tab(audioFileName));
+                Project project = new Project(audioFile);
+                //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+                //System.out.println(audioInputStream.getFormat().toString());
             }
             projectListView.setItems(items);
 
-            projectListView.setCellFactory(lv -> {
+            /*projectListView.setCellFactory(lv -> {
                 ListCell<String> listCell = new ListCell<>();
                 listCell.setContextMenu(null);
                 return listCell;
-            });
+            });*/
 
-            //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
-            //System.out.println(audioInputStream.getFormat().toString());
+
         /*} catch (UnsupportedAudioFileException e) {
             Alert alertDialog = new Alert(Alert.AlertType.ERROR);
             alertDialog.setTitle("Ошибка открытия файла");
