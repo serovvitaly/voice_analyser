@@ -4,7 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -49,13 +51,8 @@ public class Controller {
                 }
                 items.add(audioFileName);
 
-                InputStream inputStream = getClass().getResourceAsStream("project.fxml");
-                FXMLLoader fxmlLoader = new FXMLLoader().load(inputStream);
-
-                Tab tab1 = (Tab)fxmlLoader.load();
-
                 Tab tab = new Tab(audioFileName);
-
+                tab.setContent((Node) FXMLLoader.load(this.getClass().getResource("project.fxml")));
 
                 projectsTabPane.getTabs().add(tab);
                 Project project = new Project(audioFile);
