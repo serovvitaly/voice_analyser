@@ -24,25 +24,18 @@ class WavFile {
 
     private int getIntByBytes(byte[] bytes) {
 
-        for (byte bt: bytes) {
-            System.out.print(bt);
+        StringBuilder valAsString = new StringBuilder();
+        for (int ct = bytes.length - 1; ct >= 0; ct--) {
+            valAsString.append(String.format("%02X", bytes[ct]));
         }
-        System.out.println("");
-        for (byte bt: bytes) {
-            System.out.print(String.format("%02X", bt));
-        }
-
-        //System.out.println(bytes);
-        System.out.println("");
-        System.out.println("---------------------");
-        return 1;
+        return (int) Long.parseLong(valAsString.toString(), 16);
     }
 
     private void readHeader() {
         byte[] buffer = new byte[40];
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
-            int readBytes = fileInputStream.read(buffer, 0, 40);
+            fileInputStream.read(buffer, 0, 40);
             AudioFormat = getIntByBytes(Arrays.copyOfRange(buffer, 20, 22));
             NumChannels = getIntByBytes(Arrays.copyOfRange(buffer, 22, 24));
             SampleRate = getIntByBytes(Arrays.copyOfRange(buffer, 24, 28));

@@ -3,6 +3,7 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -13,6 +14,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class Controller {
@@ -46,7 +48,16 @@ public class Controller {
                     continue;
                 }
                 items.add(audioFileName);
-                projectsTabPane.getTabs().add(new Tab(audioFileName));
+
+                InputStream inputStream = getClass().getResourceAsStream("project.fxml");
+                FXMLLoader fxmlLoader = new FXMLLoader().load(inputStream);
+
+                Tab tab1 = (Tab)fxmlLoader.load();
+
+                Tab tab = new Tab(audioFileName);
+
+
+                projectsTabPane.getTabs().add(tab);
                 Project project = new Project(audioFile);
                 //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
                 //System.out.println(audioInputStream.getFormat().toString());
@@ -70,6 +81,7 @@ public class Controller {
             //
         } catch (Exception e) {
             System.out.println(e.toString());
+            throw e;
         }
     }
 }

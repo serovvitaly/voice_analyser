@@ -9,36 +9,37 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Button?>
-<VBox fx:id="mainLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="396.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="sample.Controller">
+<VBox fx:id="mainLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <MenuBar>
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" onAction="#makeProject" text="Открыть файл"/>
-            <MenuItem mnemonicParsing="false" text="Close"/>
+            <MenuItem mnemonicParsing="false" onAction="#makeProject" text="Открыть файл" />
+            <MenuItem mnemonicParsing="false" text="Close" />
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
-            <MenuItem mnemonicParsing="false" text="Delete"/>
+            <MenuItem mnemonicParsing="false" text="Delete" />
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
-            <MenuItem mnemonicParsing="false" text="About"/>
+            <MenuItem mnemonicParsing="false" text="About" />
         </Menu>
     </MenuBar>
     <SplitPane cache="true" dividerPositions="0.3" VBox.vgrow="ALWAYS">
         <opaqueInsets>
-            <Insets/>
+            <Insets />
         </opaqueInsets>
         <AnchorPane>
-            <ListView fx:id="projectListView" VBox.vgrow="ALWAYS"/>
+            <ListView fx:id="projectListView" VBox.vgrow="ALWAYS" />
         </AnchorPane>
         <AnchorPane>
-            <TabPane fx:id="projectsTabPane" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="projectsTabPane" tabClosingPolicy="ALL_TABS">
                 <!--<Tab text="Untitled Tab 1">
-                    <AnchorPane/>
+                    <AnchorPane>
+                     <VBox prefHeight="200.0" prefWidth="100.0">
+                           <Pane prefHeight="200.0" prefWidth="200.0" />
+                     </VBox>
+                  </AnchorPane>
                 </Tab>-->
             </TabPane>
         </AnchorPane>
