@@ -52,12 +52,12 @@ public class Controller {
                 items.add(audioFileName);
 
                 Tab tab = new Tab(audioFileName);
-                tab.setContent((Node) FXMLLoader.load(this.getClass().getResource("project.fxml")));
+                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("project.fxml"));
+                tab.setContent(fxmlLoader.load());
+                Project project = fxmlLoader.getController();
+                project.initProject(audioFile);
 
                 projectsTabPane.getTabs().add(tab);
-                Project project = new Project(audioFile);
-                //AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
-                //System.out.println(audioInputStream.getFormat().toString());
             }
             projectListView.setItems(items);
 
@@ -75,7 +75,7 @@ public class Controller {
             alertDialog.setContentText("Файл неверного формата или поврежден.");
             alertDialog.showAndWait();*/
         } catch (NullPointerException e) {
-            //
+            System.out.println(e.toString());
         } catch (Exception e) {
             System.out.println(e.toString());
             throw e;

@@ -2,19 +2,32 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Project">
     <VBox>
-        <Pane VBox.vgrow="ALWAYS">
-         <HBox prefHeight="100.0">
-                  <Label text="BitsPerSample" />
-                  <Label text="AudioFormat" />
-                  <Label text="NumChannels" />
-                  <Label text="SampleRate" />
-         </HBox>
-        </Pane>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Label text="BitsPerSample:" />
+            <Label fx:id="bitsPerSampleLabel" text="100" GridPane.columnIndex="1" />
+            <Label text="NumChannels:" GridPane.rowIndex="1" />
+            <Label fx:id="numChannelsLabel" text="2354" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <Label text="SampleRate:" GridPane.columnIndex="2" />
+            <Label fx:id="sampleRateLabel" text="778" GridPane.columnIndex="3" />
+            <Label text="AudioFormat:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="audioFormatLabel" text="mnh" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        </GridPane>
     </VBox>
 </AnchorPane>
